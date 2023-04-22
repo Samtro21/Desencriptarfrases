@@ -12,14 +12,15 @@ public class Menu {
 		String frase= leertext.nextLine();
 		String fraseen="";
 		String frasedes="";
-		String nuevafrase;
-		
+	
 		System.out.println("Seleccione que metodo va a utilizar");
 		System.out.println("Para el de samuel camargo digite 1");
+		System.out.println("Para el de sergio digite 2");
 		int opcion =leernum.nextInt();
 		
 		
 		final int SAMCAM=1;
+		final int SERGIO=2;
 		switch(opcion){
 			case SAMCAM:
 					fraseen= Encriptar.SamuelCamargo(frase);
@@ -28,7 +29,10 @@ public class Menu {
 					System.out.println("La frase encriptada es "+frasedes);
 				break;
 			
-			
+			case SERGIO:
+				 fraseen= Encriptar.Sergio(frase);
+				 System.out.println("La frase encriptada es "+fraseen);
+				break;
 			
 		}
 
