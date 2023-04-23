@@ -37,6 +37,52 @@ public class Desencriptar {
         }
         return desencriptarPalabra;   
     
-   
-}
+   }
+	public static String AngelaPeña (String fraseen){
+		int letranumero=0;
+		int cont=0;
+		String palabrades="";
+        for (int g=0;g<fraseen.length();g++) {
+        	if(cont==1) {
+        		g=g+1;
+        		cont=0;
+        	}
+        	int hasta=g+1;
+        	int hasta2=hasta+1;
+        	int g2=g+1;
+        	if(g2>=fraseen.length()) {
+    			g2=fraseen.length()-1;
+    		}
+        	if(hasta2>fraseen.length()) {
+    			hasta2=fraseen.length();
+    		}
+        	if(hasta>fraseen.length()) {
+    			hasta=fraseen.length();
+    		}
+        	if(fraseen.substring(g,hasta).compareTo(" ")==0) {
+        		palabrades=""+palabrades;
+        	}else {
+        		if(fraseen.substring(g2,hasta2)!=" ") {
+            		hasta=g+2;
+            		cont=1;
+            	}
+        		String [] caracteres_diferentes = {"+", "*","-", "?","!", "~","#", "$","&", "%","*+", "**","*-", "*?","*!", "*~","*#", "*$","*&", "*%","-+", "-*","--", "-?","-!", "-~",};
+            	for (int t=0; t<caracteres_diferentes.length;t++) {
+            		if(fraseen.substring(g,hasta).compareTo(caracteres_diferentes[t])==0) {
+                		letranumero=t;
+                		break;
+                	}
+            	}
+            	 String [] abecedario = {"a", "b","c", "d","e", "f","g", "h","i", "j","k", "l","m", "n","o", "p","q", "r","s", "t","u", "v","w", "x","y", "z",};
+            		letranumero=abecedario.length-letranumero;
+            		System.out.println(fraseen.length());
+            		System.out.println(g);
+            		System.out.println(abecedario[letranumero-1]);
+            	palabrades=abecedario[letranumero-1]+palabrades;
+        	}
+        	
+        }
+        //finalmente la funcion me retorna la palabra encriptada
+        return(palabrades);
+    }
 }
