@@ -11,7 +11,7 @@ public class Encriptar {
         String[] deletreo = new String [frase.length()]; // se inicializa un vector para almacenar la palabra a encriptar
         for(int i=0; i<frase.length();i++){   // para i = 0 mientras i sea menor que el largo de la palabra i aumenta en 1
             
-            deletreo[i] = frase.substring(0+i, 1+i); // se toma la palagra ingresada y se separa letra por letra
+            deletreo[i] = frase.substring(i, 1+i); // se toma la palagra ingresada y se separa letra por letra
 
             
         }
@@ -19,17 +19,17 @@ public class Encriptar {
             String deletras = deletreo[j]; // se inicializa una variable que almacene el vector de deletreo
             
             
-            for(int i=0; i<26;i++){ // para i = o mientras i sea menor que 26 aumentar i en 1
+            for(int i=0; i<abecedario.length;i++){ // para i = o mientras i sea menor que 26 aumentar i en 1
                 
                 String letras = abecedario[i];  // se inicializa una variable que almacene las letras del abecedario
                 int condicion = i - frase.length()*2;  /*se inicializa una variable que almacena las condiciones de encriptacion 
                                                     que es restar el numero de espacios del largo de la palabra y se multiplica ese valor en 2 */ 
             
-            if(condicion<0){  // se crea una condicion para evitar que la encriptacion se desborde del abecedario
+                if(condicion<0){  // se crea una condicion para evitar que la encriptacion se desborde del abecedario
 
                     condicion=condicion+abecedario.length;
                 }
-                if (deletras.contains(letras) == true ){ // se crea la condicion para encriptar la palabra
+                	if (deletras.contains(letras) == true ){ // se crea la condicion para encriptar la palabra
                         
                     encriptarPalabra = encriptarPalabra +  abecedario[condicion];
                     break;
@@ -39,30 +39,29 @@ public class Encriptar {
         return encriptarPalabra;   
     }
 	public static String Sergio (String frase) {
-	         String[] vector={"a","b","c","d","e","f","g","h","i","j","k","l","m","n","ñ","o","p","q","r","s","t","u","v","w","x","y","z"," "};
-	             String resultado="";
-	              for(int i=0;i<frase.length();i++){//ciclo desde la primera letra hasta la ultima
-	                  for(int x=0;x<28;x++){//ciclo de a hasta z
-	                     if(vector[x].equals(frase.substring(i,i+1))){//comprueba si la letra es igual a la posicion en el vector
-	                        int y=x;
-	                        for(int z=16;z>=1;z=z/2){//comprueba la cuatro potencias para cada letra
-	                            if(y/z>=1){//este ciclo prueba con las potencias de 2 y si es mayor que alguna de esta agrega un asterisco
-	                                resultado+="*";
-	                               }else{
-	                                resultado+=" ";//si no es divisible entonces me suma un espacio que es la opcion apagado
-	                               }
-	                            if(y/z>=1){//en este ciclo tambien prueba las potencias de 2 
-	                                    y=y%z;//con esto al agregar un * le saca el modulo del valor de esa potencia 
-	                                }
-	                            
-	                          }
-	                        resultado+="/";//separa cada letra 
-	                        break;//acaba con el ciclo
-	                         }
-	                   }
-	                }
+		String[] vector={"a","b","c","d","e","f","g","h","i","j","k","l","m","n","ñ","o","p","q","r","s","t","u","v","w","x","y","z"," "};
+		String resultado="";
+		for(int i=0;i<frase.length();i++){//ciclo desde la primera letra hasta la ultima
+			for(int x=0;x<vector.length;x++){//ciclo de a hasta z
+				if(vector[x].equals(frase.substring(i,i+1))){//comprueba si la letra es igual a la posicion en el vector
+					int y=x;
+					for(int z=16;z>=1;z=z/2){//comprueba la cuatro potencias para cada letra
+						System.out.println("-->"+(y/z));
+						if(y/z>=1){//este ciclo prueba con las potencias de 2 y si es mayor que alguna de esta agrega un asterisco
+							resultado+="*";
+							y=y%z;//con esto al agregar un * le saca el modulo del valor de esa potencia 
+						}else{
+							resultado+=" ";//si no es divisible entonces me suma un espacio que es la opcion apagado
+						}
+						System.out.println(y);
+					}
+					resultado+="/";//separa cada letra 
+					break;//acaba con el ciclo
+				}
+			}
+		}
 
-	
+
 		return resultado;
 	}
 	
@@ -160,7 +159,8 @@ public class Encriptar {
 	            }
 	        }
 	
-	
+	    String figurita = "";
+	    figurita += "...\n...\n...";
         return "";
 	}
 	public static String Selene (String frase){//Problema
@@ -307,9 +307,6 @@ public class Encriptar {
 				palabra.toLowerCase();
 						
 				String abc = "abcdefghijklmnopqrstuvwxyz";
-				abc.toCharArray();
-				palabra.toCharArray();
-						
 				//definir variables
 				//variable que guarde la posicion en el abecedario de la letra
 				int valorNumero = 0;
@@ -401,7 +398,81 @@ public class Encriptar {
 						
 				return nuevaPalabra;
 			}
-	
+	/*
+	* Nicol Sofia Cepeda Vanegas - 202213321
+	* Con este ejercicio se pasa de una palabra en español a una en morse haciendo uso de los vectores y sus posiciónes.
+	* Se pide la palabra, se pasa a mayusculas y después dependiendo de las posiciones cambia a morse
+	*/
+	public static String carol(String frase) {
+	         /*
+	        * vector de abecedario y de morse correspondientemente,
+	        * las letras tienen la misma posición en morse que en el abecedario
+	        */
+	        String[] letraEsp = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "Ñ", "O", "P", "Q", "R",
+	        "S", "T", "U", "V", "W", "X", "Y", "Z" };
+	        String[] letraMorse = { ".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", ".---", "-.-", ".-..", "--",
+	        "-.", "--.--", "---", ".--.", "--.-", ".-.", "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--.." };
+
+	        System.out.println("Por favor ingrese la palabra a encriptar"); //muestra el mensaje que pide la palabra
+	        String palabraEsp = frase; //Scanner para ingresar palabra
+	        
+	        String palabraMayus = palabraEsp.toUpperCase(); // pasar toda la palabra a mayusculas porque en el vector está así
+
+	        String palabraEnc = ""; //Inicializa palabraEnc con nada para poderse usar después en la impresión de la palabra encriptada
+	        // ciclo for desde 1 hasta la longitud de la palabra
+	        for (int i = 1; i <= palabraEsp.length(); i++) {
+	            /*  esa el substring para extraer la subcadena de texto de la palabra (Letra), va desde el inicio de la letra hasta 
+	            el final de la letra (i-1, i)*/
+	            String letra = palabraMayus.substring(i-1, i);
+	            // ciclo for para establecer la posición morse
+	            for (int j = 0; j < letraEsp.length; j++) {
+	                // comparar la letra en la posición correspondiente con el vector de las letras del abecedario en español
+	                if (letra.equals(letraEsp[j])) {
+	                    /*
+				  * se muestra la letra en morse con la posición j que se había comparado en el vector de las letras en español, 
+	                    * como tienen la misma posición en español y en morse solo hay que poner la j para que se entienda cual posición es en morse
+	                    * la letra encriptada se va almacenando en palabraEnc
+				  */ 
+	                    palabraEnc = palabraEnc + letraMorse[j] + "|"; 
+	                }
+	            }
+	        }
+	        return palabraEnc;
+	    }
+	public static String SamirYate( String texto){
+		String abc = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
+        String textoCodificado = "-_-";
+        /*Lo que me permite es que el texto ingresado me devuelva la encriptación en mayuscula para eso se usa el metodo (toUpperCase),
+        ya que el abecedario esta en mayuscula: 
+        */
+        texto = texto.toUpperCase();
+       
+        //Creamos una variable de tipo char que nos va a servir para ser usado en el ciclo for:
+        char caracter;
+       
+        //Este ciclo tiene la funcion de recorrerme todo el texto, que para esto no ayuda tambien el texto.length() y nos incrementa en 1:
+        for (int i=0; i < texto.length(); i++){
+
+         //Lo que hago aqui es devolver el valor del número de posición de un carácter en un string:
+         caracter = texto.charAt(i);
+        
+         //Me dice la posición donde esta un caracter:
+         int posicion = abc.indexOf(caracter);
+         
+         //Este if me va a poner el mismo caracter si se cumple la condicion, en un ejemplo que digamos haya un espacio:
+         if (posicion == -1){
+            textoCodificado += caracter;
+         }
+         /*Este else cumple la función de cojerme la posición y correse 3 posiciones mas hacia la derecha 
+         y si nos pasamos del abecedario es decir de (Z) se reinica al comienzo (A): */
+         else{
+            textoCodificado += abc.charAt(posicion + 3 % abc.length());
+         }
+         
+        }
+        //Me retorna el String (textoCodificado) a la clase main para mostrarlos en pantalla por dicha clase:
+        return textoCodificado;
+       }
 }
 
 

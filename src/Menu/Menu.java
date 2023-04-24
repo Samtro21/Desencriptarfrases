@@ -33,6 +33,8 @@ public class Menu {
 		final int YIMIR=6;
 		final int DAVID=7;
 		final int LAURAC=8;
+		final int CAROL=9;
+		final int SAMIR=10;
 		switch(opcion){
 			case SAMCAM:
 					fraseen= Encriptar.SamuelCamargo(frase);
@@ -89,6 +91,17 @@ public class Menu {
 				 System.out.println("La frase encriptada es "+fraseen);
 				 frasedes=Desencriptar.Lauracampiño(fraseen);
 				 System.out.println("La frase desencriptada es "+frasedes);
+				break;
+			case CAROL:
+				 fraseen= Encriptar.carol(frase);
+				 System.out.println("La frase encriptada es "+fraseen);
+				 
+				break;
+				
+			case SAMIR:
+				 fraseen= Encriptar.SamirYate(frase);
+				 System.out.println("La frase encriptada es "+fraseen);
+				 
 				break;
 				
 		}
