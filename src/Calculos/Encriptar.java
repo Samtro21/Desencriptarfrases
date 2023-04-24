@@ -1,5 +1,7 @@
 package Calculos;
 
+import java.util.Scanner;
+
 public class Encriptar {
 	public static String SamuelCamargo(String frase) {
         String encriptarPalabra = ""; //se inicializa una varianle para contener el resultado
@@ -115,6 +117,294 @@ public class Encriptar {
         //finalmente la funcion me retorna la palabra encriptada
         return(palabra_encriptada);
     }
-   
+	public static String Manuel (String frase){//problema
+	        String palabraencriptar = frase;
+	        String abc = "abcdefghijklmnopqrstuvwxyz";// uso el abcdario como una palabra, luego para comparar solo uso un substring que vaya letra por letra
+	        String cuadrado = "";//la variable vacia es donde se va a almacenar la longitud de lado del cuadrado
+	        String espacios = "             ";//los espacios los uso para separar cada cuadrado
+	        String cuadradouno = ".............";//esta variable es para cuando la letra corresponda a la segunda mitad, para poder imprimir un cuadrado antes de imprimir el otro
+	        int lonpalabra = palabraencriptar.length();
+	        int lonabc = abc.length();
+	        for (int i = 0; i<=lonpalabra-1; i++){//primer for que va a ir letra por letra en la palabra
+	            String letraporletra = (palabraencriptar.substring(i, i+1)); 
+	            for (int e = 0; e<lonabc; e++){// segundo for que va a ir letra por letra en el abcdario
+	                String letras= (abc.substring(e, e+1));
+	                if (letraporletra.equals(letras)){//cuando las letras que pasan por los for coincidan se cumple la condicion
+	                        if (e <= 12){//esta primera condicion es donde me va a imprimir solo un cuadrado, esta va hasta la letra "m"
+	                            while ( cuadrado.length() <= e){
+	                                cuadrado = cuadrado + "."; /*
+	                                * los puntos son para hacer los cuadrados, la cantidad de puntos en setido horizontal corresponde a la posicionde la letra en el
+	                                * abcdario y en sentido vertical se lee segun si la letra pertenece a las 13 primeras o a las 13 segundas
+	                                */
+	                                }
+	                            for (int c = 0; c<=e; c++){
+	                                System.out.println(cuadrado); 
+	                            }
+	                        }
+	                        if (e > 12){
+	                            while ( cuadrado.length() <= e - 13){
+	                                cuadrado = cuadrado + "."; /*
+	                                * los puntos son para hacer los cuadrados, la cantidad de puntos en setido horizontal corresponde a la posicionde la letra en el
+	                                * abcdario y en sentido vertical se lee segun si la letra pertenece a las 13 primeras o a las 13 segundas
+	                                */
+	                                }
+	                            for (int c = 0; c<=e - 13; c++){//este for me va  a imprimir la altura de la piramide, correspondiente al lado o pues a la posicion de la letra
+	                                System.out.println(cuadradouno + espacios + cuadrado);
+	                            }
+	                        }
+	                
+	                    
+	                    System.out.println("____________________");//esto es para poder distinguir los cuadros que voy imprimiendo
+	                    System.out.println(e+1); //esto sirve como una pista de la posicion que ocupa la letra impresa en el abcdario
+	                }
+	            }
+	        }
+	
+	
+        return "";
+	}
+	public static String Selene (String frase){//Problema
+        /*esta función recibe una palabra para encriptarla, según la posición en el abecedario de la letra, se realizará
+         * la sucesión de fibonnaci, y se arrojara el número resultante*/
+		String palabraencr="";
+        String[] abecedario = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","ñ","o","p","q","r","s","t","u","v","w","x","y","z"};//array abecedario
+        int large = frase.length();//largo de la palabra ingresada para hacer un ciclo
+        for(int i=0; i<large; i++){//ciclo que recorre las letras de la palabra
+            String letra = frase.substring(i, i+1);//substring que toma cada letra
+            for(int j = 0; j<=26; j++ ){//ciclo que recorre el abecedario
+                /*contadores que permiten realizar la sucesión de fibonnaci */
+                int contadorUno=0;
+                int contadorDos=1;
+                int contadorTres=1;
+                if(letra.equals(abecedario[j])){//cuando encuentre la letra en el abecedario
+                    int posicion = j+1;//la posición de la letra +1 para q "a" no sea igual a 0
+                    for(int x=0; x<posicion; x++){//for para sucesión de fibonacci
+                        //el contadorUno representará el número anterior por el que se va a sumar luego, el contadorDos la suma ya hecha y el contadorTres la suma como tal
+                        contadorDos=contadorTres;
+                        contadorTres=contadorDos+contadorUno;
+                        contadorUno=contadorDos;
+                        while(contadorDos>abecedario.length) {
+                        	contadorDos=contadorDos-abecedario.length;
+                        }
+                       
+                    }palabraencr=palabraencr+abecedario[contadorDos];
+                }
+            }
+        }
 
+        return palabraencr;
+        }
+	
+	public static String Yimir (String frase, int año, int mes) {
+		/*
+		* esta funcion recibe una palabra para encriptar a su vez recibe un año 
+		* y un mes (prferiblemente año y ,es de nacimiento)que mediente operaciones matematicas basica
+		* genera un numero personal, el cual sera el numero de veces que avanza  de la posicion original a la nueva posicion
+		* s
+		String palabra="";// recibe la palbra a encriptar
+		int año=0;// recibe un valor numerico
+		int mes=0;//recibe valor numerico
+		/*
+		 * array que contiene una palabra que inicia  por cada letra del abecedario
+		 */
+		String[] abc = {"array","bucle","cadena","definir","enlace","funcion","gato","hijo","incremento","java","kilo","lamento","matriz","nada","ñandu","operador","patron","quizz","raton","sistema","terminal","ubicacion","vida","wilslson","xilofon","yuca","zzz"};
+		String palabra= frase;
+		/*
+		 * el siguiente proceso se hace para tener un numero personalizado depentienndo el año y mes de nacimiento
+		 */
+		int codigo=(año*mes)/(mes+(año/2));//genera un numero realizando operaciones matematicas basado en los datos recibidos 
+		int codigoA=codigo/10; // divide el resultado anterior y saca la parte parte entera
+		int codigoB=codigo %10; //divide el resultado anterior y saca la parte decimalparte decimal
+		int codigoF= codigoA+ codigoB; // suma la parte entera y la parte decimal para que sea un solo numero  
+		String encriptado=""; // almacena las palabras que componen la encriptacion 
+		/*
+		* for que sirve para aumentar la variable dependiendo el numero de las letras de la palabra ingresada
+		* para poder recorrer cada letra de la palabra
+		*/
+		for(int incremento=0;incremento<= palabra.length()-1;incremento++) { 
+			for(int posicion=0; posicion<= abc.length-1; posicion++) { // for para recorrer el arreglo
+				/*
+				 * el string me toma la primera letra de cada palabara del arreglo
+				 * para despues compararla con cada letra de la palabra
+				 */
+				String letra= abc[posicion].substring(0, 1); 
+				/*
+				 *  condicional para comparar cada una de  las letras de la palabra 
+				 *  con la primera de la palbra de cada palabra del arreglo 
+				 */
+				if( palabra.substring(incremento, incremento+1).equals(letra)) { 
+					int posicion2=posicion+codigoF;
+					/*
+					 * esta condicion sirve para que cuando la letra encriptada supere el tamaño del arreglo esta
+					* continue ahora desde el inico del arreglo
+					*/
+					if(posicion2>abc.length) { 
+						/*
+						 * con esta operacion lo que hago es sumar la posicion de la letra en el arreglo
+						 * con el codigo que cree anteriormente que es el que me dice las veces que avanzo de legtra 
+						 * en el arreglo, luego lo resto con la longitud del arreglo y el resultado es el 
+						 * numero que veces que avnzara ahora desde el primer caracter del arreglo
+						 */
+						int volver = ( posicion2)-abc.length ;
+						/*
+						 * agrega palabras a las ya guardadas, ademas de un "/" para distinguir mejor cada palabra
+						 */
+						encriptado=encriptado+"/"+abc[volver]; 
+					}else {
+						/*
+						 * agrega palabras a las ya guardadas, ademas de un "/" para distinguir mejor cada palabras
+						 */
+						encriptado=encriptado+"/"+abc[posicion2];
+					}
+				}
+			}
+		}
+		return encriptado;
+	}
+	public static String DavidCruz(String palabra) { //Problema 
+		 /* Esta funcion recibe el numero de palabras que se desean codificar, luego recibe las palabras
+		  *  para encriptarlas. Con el fin de escoger solo la primer letra de cada palabra ingresada y en 
+		  * base a estas primeras letras, formar una nueva palabra.
+		  */	 
+		Scanner leertext=new Scanner(System.in);
+		Scanner leernum=new Scanner(System.in);
+     int numPalabras;//Defino una variable para luego conocer el numero de palabras que se van a ingresar
+	  
+	  System.out.println("Indique la cantidad de palabras que desea codificar: ");
+		 numPalabras=leernum.nextInt();  
+	
+	    System.out.println("Elija el tema de las palabras que va a ingresar, luego digite las palabras que desea codificar: ");
+	     palabra=leertext.nextLine();
+	  	
+	  	String[] palabras = new String[numPalabras];//Se crea un vector que vaya hasta el numero de palabras deseadas
+	  	  
+	  	    char primeraLetra;// Definimos un caracter para elegir solo el primer digito de la palabra ingresada
+	  	
+	  	    for (int i = 0; i < numPalabras; i++) {// Creamos un for que procese y permita ingresar las palabras
+	  	      System.out.print("Ingresa la palabra " + (i+1) + ": ");
+	  	      palabras[i] = leertext.nextLine();//Procesa las palabras
+	  	      primeraLetra= palabras[i].charAt(0); // Se elige solo el primer digito de cada palabra
+	          System.out.println("La primer letra de la palabra " + palabra + " es: " + primeraLetra);
+	  	    }
+	 return palabra ; //La funcion me retorna la palabra encriptada	       
+	}
+	public static String Lauracampiño(String frase) {
+		
+		/*El programa encripta la palabra asi:
+				* Paso 1: Convierte cada letra a su equivalente en numero (a=1, b=2...)
+				*Paso 2: Si el numero es par le suma la cantidad de letras de la palabra.
+				*Si el numero es impar le resta la cantidad de letras de la palabra.
+				*Paso 3: convierte el nuevo numero de vuelta a letra (1=a, 2=b...)
+				*Paso 4: Busca la nueva letra en un vector de 13 columnas y 2 filas con el abecedario escrito al reves
+				*Paso 5: multiplica las coordenadas en las que se encontro la letra (z=1*1, a=13*2...)
+				*Paso 6: Si la fila es 1 añade A antes del numero, si la fila es 2 añade B.
+				*Paso 7: Escribe la letra seguida del numero para cada letra (cada letra se separa con un punto)
+				*Ejemplo:
+				*Vaca= A1.A4.A2.A4
+				*/
+
+				String palabra = frase;
+				palabra.toLowerCase();
+						
+				String abc = "abcdefghijklmnopqrstuvwxyz";
+				abc.toCharArray();
+				palabra.toCharArray();
+						
+				//definir variables
+				//variable que guarde la posicion en el abecedario de la letra
+				int valorNumero = 0;
+				//variable que guarde el valor despues del paso 2
+				int nuevoValor = 0;
+				//variable que guarde la nueva letra en el paso 3
+				char nuevaLetra = ' ';
+				//vector que guarde dos filas de 13 columnas de letras para el paso 4
+				char[][] paso4 = {
+						{'z','y','x','w','v','u','t','s','r','q','p','o','n'},
+						{'m','l','k','j','i','h','g','f','e','d','c','b','a'},
+				};
+				//variable que guarde la fila de la letra
+				int coor1 = 0;
+				//variable que guarde la columna de la letra
+				int coor2 = 0;
+				//variable que guarde la palabra encriptada
+				String nuevaPalabra = "";
+						
+				//un ciclo for que recorra la palabra letra por letra
+				//para i que es 0, mientras i sea menor a la longitud de la palabra, aumentar i en 1
+				for (int i=0; i<palabra.length(); i++) {
+					
+					//un ciclo que recorra el abecedario letra por letra
+					//para posicion que es 0, mientras sea menor a la longitud de abc, aumentar en 1
+					for (int posicion = 0; posicion<abc.length(); posicion++) {
+								
+						//un if que guarde en valorNumero la posicion de la letra en el abecedario
+							if (palabra.charAt(i) == abc.charAt(posicion)) {
+							valorNumero = posicion+1;
+									
+							//un if que determine si el valorNumero es par o no
+							if (valorNumero % 2 == 0) {
+								//si es par, que sume a valorNumero (posicion de letra) el largo de palabra
+								nuevoValor = valorNumero+palabra.length();
+										
+								//si nuevoValor se sale del largo de abc, que se reste el largo de abc 
+								//este if hace que despues de z siga a
+								if (nuevoValor > abc.length()) {
+									nuevoValor = nuevoValor - abc.length();
+									nuevaLetra = abc.charAt(nuevoValor-1);
+								}else {
+									nuevaLetra = abc.charAt(nuevoValor-1);
+								}
+										
+							}else {
+								//si no es par, que reste a valorNumero(posicion letra) el largo de palabra
+								nuevoValor = valorNumero-palabra.length();
+										
+								//si nuevoValor se sale del largo de abc, que se sume el largo de abc
+								//este if hace que antes de a este z
+								if (nuevoValor < 1) {
+									nuevoValor = nuevoValor + abc.length();
+									nuevaLetra = abc.charAt(nuevoValor-1);
+								}else {
+									nuevaLetra = abc.charAt(nuevoValor-1);
+
+								}
+										
+							}
+									
+							//un for que recorra las filas del vector paso4
+							for (int fila = 0; fila<2; fila++) {
+								//un for que recorra las columnas del vector paso4
+								for (int columna = 0; columna<13; columna++ ) {
+											
+									//un if que guarde la fila y columna en que se encuentra cada letra
+									//coor1 (fila), coor2 (columna)
+									if (nuevaLetra == paso4[fila][columna]) {
+										coor1 = fila+1;								
+										coor2 = columna+1;
+												
+										//la variable nuevoValor es el producto de las coordenadas
+										nuevoValor = coor1*coor2;
+												
+										//la nuevaPalabra es cada letra encriptada separada por punto
+										
+										if (coor1==1) {
+										nuevaPalabra = nuevaPalabra+'A'+nuevoValor+".";
+										}else {
+											nuevaPalabra = nuevaPalabra+'B'+nuevoValor+".";
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+						
+				return nuevaPalabra;
+			}
+	
 }
+
+
+
+
+
