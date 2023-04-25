@@ -428,4 +428,28 @@ public class Desencriptar {
 		
 		return palabranueva;
 	}
+	public String juanfu (String fraseen) {
+		String palabra="";
+		String letranueva="";
+		String palabranueva="";
+		int numpalabra=0;
+		String[] abc = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","x","y","z"};
+		for (int w=0; w<fraseen.length();w++) {
+			palabra= fraseen.substring(w+1,w+2);
+			for (int j=0; j<abc.length;j++) {
+				if(palabra.compareTo(abc[j])==0) {
+					numpalabra=j;
+				}
+				letranueva=abc[numpalabra];
+			}
+			for(int u=w; u<fraseen.length();u++) {
+				if(fraseen.substring(u,u+1).compareTo(" ")==0) {
+					w=u;
+					break;
+				}
+			}
+			palabranueva=palabranueva+letranueva;
+		}
+		return palabranueva;
+	}
 }

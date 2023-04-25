@@ -28,6 +28,7 @@ public class Menu {
 		System.out.println("Para el de laura correa digite 11");
 		System.out.println("Para el de elias digite 12");
 		System.out.println("Para el de tomas digite 13");
+		System.out.println("Para el de juan digite 14");
 		int opcion =leernum.nextInt();
 		
 		
@@ -72,6 +73,7 @@ public class Menu {
 		Desencriptar tomasesd=new Desencriptar();
 		final int JUANFU=14;
 		Encriptar juanfu=new Encriptar();
+		Desencriptar juanfud=new Desencriptar();
 		
 		switch(opcion){
 			case SAMCAM:
@@ -174,11 +176,13 @@ public class Menu {
 			case JUANFU:
 				fraseen=juanfu.juanfu(frase);
 				System.out.println("La frase encriptada es "+fraseen);
-				
+				frasedes=juanfud.juanfu(fraseen);
+				System.out.println("La frase desencriptada es "+frasedes);
 		}
 
 	}
 
 }
+
 
 

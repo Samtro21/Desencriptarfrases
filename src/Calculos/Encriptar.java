@@ -1,4 +1,5 @@
 package Calculos;
+import java.util.Random;
 
 import java.util.Scanner;
 
@@ -501,7 +502,7 @@ public class Encriptar {
         return palabraEncriptada; // Retorna las palabras con las que codificamos la palabra inicial!
     }
 }
-s
+
 
 
 
