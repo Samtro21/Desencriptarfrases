@@ -9,6 +9,7 @@ public class Menu {
 		System.out.println("Digite una frase");
 		Scanner leertext=new Scanner(System.in);
 		Scanner leernum=new Scanner(System.in);
+		Scanner leerboo= new Scanner(System.in);
 		String frase= leertext.nextLine();
 		String fraseen="";
 		String frasedes="";
@@ -25,6 +26,8 @@ public class Menu {
 		System.out.println("Para el de nicol digite 9");
 		System.out.println("Para el de samir digite 10");
 		System.out.println("Para el de laura correa digite 11");
+		System.out.println("Para el de elias digite 12");
+		System.out.println("Para el de tomas digite 13");
 		int opcion =leernum.nextInt();
 		
 		
@@ -61,6 +64,15 @@ public class Menu {
 		final int LAURACO=11;
 		Encriptar lauraco=new Encriptar();
 		Desencriptar lauracod=new Desencriptar();
+		final int ELIAS=12;
+		Encriptar eliascam=new Encriptar();
+		Desencriptar eliascamd=new Desencriptar();
+		final int TOMAS=13;
+		Encriptar tomases=new Encriptar();
+		Desencriptar tomasesd=new Desencriptar();
+		final int JUANFU=14;
+		Encriptar juanfu=new Encriptar();
+		
 		switch(opcion){
 			case SAMCAM:
 					fraseen= samuelc.samuelcamargo(frase);
@@ -142,6 +154,26 @@ public class Menu {
 				 frasedes=lauracod.lauraco(fraseen);
 				 System.out.println("La frase desencriptada es "+frasedes);
 				break;
+				
+			case ELIAS:
+				fraseen= eliascam.eliascam(frase);
+				System.out.println("La frase encriptada es "+fraseen);
+				frasedes=eliascamd.eliascam(fraseen);
+				System.out.println("La frase desencriptada es "+frasedes);
+				
+			case TOMAS:
+				System.out.println("Digite un numero");
+				int numero=leernum.nextInt();
+				System.out.println("Digite su desicion");
+				boolean desicion=leerboo.nextBoolean();
+				fraseen=tomases.tomases(frase,numero,desicion);
+				System.out.println("La frase encriptada es "+fraseen);
+				frasedes=tomasesd.tomases(fraseen,numero, desicion);
+				System.out.println("La frase desencriptada es "+frasedes);
+				
+			case JUANFU:
+				fraseen=juanfu.juanfu(frase);
+				System.out.println("La frase encriptada es "+fraseen);
 				
 		}
 

@@ -385,7 +385,123 @@ public class Encriptar {
  		}	 		
     	         return(encriptada);
      } 
+	public String eliascam (String frase) {
+		int posicionanterior=0;
+		int posicionsiguiente=0;
+		String palabra="";
+		String letraanterior="";
+		String letrasiguiente="";
+		String nuevapalabra="";
+		String [] abecedario = {"a", "b","c", "d","e", "f","g", "h","i", "j","k", "l","m", "n","o", "p","q", "r","s", "t","u", "v","w", "x","y", "z",};
+		for (int g=0; g<frase.length();g++) {
+			palabra=frase.substring(g,g+1);
+			for (int y=0; y<abecedario.length;y++) {
+				if(palabra.compareTo(abecedario[y])==0) {
+					posicionanterior=y-1;
+					posicionsiguiente=y+1;
+					if(posicionanterior<0) {
+						posicionanterior=posicionanterior+abecedario.length;
+					}
+					if(posicionsiguiente>abecedario.length) {
+						posicionsiguiente=posicionsiguiente-abecedario.length;
+					}
+					letraanterior=abecedario[posicionanterior];
+					letrasiguiente=abecedario[posicionsiguiente];
+				}
+			}
+			nuevapalabra=nuevapalabra+letraanterior+letrasiguiente;
+			
+		}
+		return nuevapalabra;
+	}
+	public String tomases (String palabra, int numero, boolean desicion) {// creamos metodo para encriptar la palabra
+		int posicion=0;
+		String palabraEncriptada = "";//creamos variable para ir agragando letra encriptada
+		String[] abc = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","x","y","z"};// array con abecedario
+		for(int i = 0; i < palabra.length(); i++) {//ciclo que recorre la longitud de la palabra a encriptar
+			String caracter = palabra.substring(i,i+1);//substring para sacar letra por letra
+			for(int y=0; y<abc.length;y++) {
+				if(caracter.compareTo(abc[y])==0) {
+					 posicion=y;
+					break;
+				}
+			}
+			int zona =posicion ;//asigno variable con la posicio de la letra
+			if(zona < 0) {
+				palabraEncriptada += caracter;// si se cumple la condicion agregar caracter directamente
+			}else {
+				int zonaNueva = 0;// si no se cumple zona == 0
+				if(desicion) {//recordar: desicion = true
+					zonaNueva = zona + numero;// le sumamos a zona el número del dorsal
+					if(zonaNueva >= abc.length) {//condicion: mayor al número de posiciones
+						zonaNueva = zonaNueva - abc.length ;//restamos el número de posiciones
+					}
+				}else {
+					zonaNueva = zona - numero;//restamos el número del dorsal
+					if(zonaNueva < 0) {
+						zonaNueva = zonaNueva + abc.length ;//sumamos el número de posiciones
+					}
+					
+				}
+				String letraNueva = abc[zonaNueva];//toma la posicion zona nueva
+				palabraEncriptada += letraNueva;//agragamos letra encriptada
+				
+			}
+		}
+		
+		return palabraEncriptada;//retorna palabra encriptada
+	}
+	public String juanfu(String frase) {
+		String palabraEncriptar=frase;
+        String palabraEncriptada = ""; // Este string almacenará el resultado de la encriptación
+        Random randomOpcion = new Random(); // Nombro la función random para usarla durante el proceso
+        int longitudPalabra = palabraEncriptar.length(); // Utilizo este length para saber la longitud de la palabra
+        String[] abecedario = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q",
+                "r", "s", "t", "u", "v", "w", "x", "y", "z" }; // Vector abecedario
+        for (int interno = 0; interno < longitudPalabra; interno++) { // Ciclo "para" para recorrer cada letra de la
+                                                                      // palabra ingresada
+            String letraComp = palabraEncriptar.substring(interno, interno + 1); // El String letraComp almacenará cada
+                                                                                 // letra de la palabra que tome en ese
+                                                                                 // momento
+            for (int posiciones = 0; posiciones < abecedario.length; posiciones++) { // Ciclo "para" para recorrer el
+                                                                                     // vector abecedario
+                String letra = abecedario[posiciones]; // El String letra tomará la letra según el número de posición
+                                                       // del for anterior
+                if (letraComp.equals(letra)) { // Si la letra a comparar es igual a la letra del abecedario en la que
+                                               // nos encontramos en el momento entonces:
+                    final int opcionA = 0; // Determino las constantes para saber cúal
+                    final int opcionB = 1; // Vector de palabras tomará para codificar
+                    int opcionPalabra = randomOpcion.nextInt(2); // Creo el int opcionPalabra para que sea random con un
+                                                                 // limite de 2
+                                                                 // Para que tome las opciones 0 y 1.
+                    switch (opcionPalabra) { // Switch dependiendo de la opcion elegida por el random
+                        case opcionA: // Primer caso
+                            String[] palabrasA = { "farol ", "abaco ", "acido ", "odiar ", "celda ", "afan ", "egida ",
+                                    "chelo ", "giga ", "ojo ", "akilo ", "llave ", "amor ", "unico ",
+                                    "dolar ", "apolo ", "equis ", "bravo ", "aspas ", "ataud ", "cuidar ", "evitar ",
+                                    "ewall ", "oxido ", "lycra ", "ozono " };
+                            // Vector con palabras para el primer caso
+                            palabraEncriptada = palabraEncriptada + palabrasA[posiciones];
+                            // Se agrega la palabra que corresponde a la letra al string de
+                            // palabraEncriptada
+                            break; // Termina esta parte del proceso
+                        case opcionB: // Segundo caso
+                            String[] palabrasB = { "dados ", "obrar ", "acoge ", "ideas ", "delta ", "eficaz ",
+                                    "igual ", "short ", "hiena ", "ajuste ", "akafir ", "oliva ",
+                                    "omega ", "angel ", "logos ", "epoca ", "aquel ", "trozo ", "usual ", "otoño ",
+                                    "lulo ", "avisa ", "uwisky ", "extra ", "ayate ", "azota " };
+                            // Vector con palabras para el segundo caso
+                            palabraEncriptada = palabraEncriptada + palabrasB[posiciones];
+                            // Se agrega la palabra que corresponde a la letra al string de
+                            // palabraEncriptada
+                    }
+                }
+            }
+        }
+        return palabraEncriptada; // Retorna las palabras con las que codificamos la palabra inicial!
+    }
 }
+s
 
 
 

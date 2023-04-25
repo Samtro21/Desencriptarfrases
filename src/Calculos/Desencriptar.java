@@ -373,4 +373,59 @@ public class Desencriptar {
 		}
 		return palabrades;
 	}
+	public String eliascam (String fraseen) {
+		int hasta=0;
+		int numletra=0;
+		String letra="";
+		String nuevapalabra="";
+		String nuevaletra="";
+		String [] abecedario = {"a", "b","c", "d","e", "f","g", "h","i", "j","k", "l","m", "n","o", "p","q", "r","s", "t","u", "v","w", "x","y", "z",};
+		for(int h=0; h<fraseen.length();h=h+2) {
+			hasta=h+1;
+			letra=fraseen.substring(h,hasta);
+			for(int r=0; r<abecedario.length;r++) {
+				if(letra.compareTo(abecedario[r])==0) {
+					numletra=r+1;
+					if(numletra>=abecedario.length) {
+						numletra=numletra-abecedario.length;
+					}
+					nuevaletra=abecedario[numletra];
+					
+				}
+			}
+			nuevapalabra=nuevapalabra+nuevaletra;
+		}
+		return nuevapalabra;
+	}
+	public String tomases (String fraseen, int numero, boolean desicion) {
+		int posicionnueva=0;
+		String letra="";
+		String letranueva="";
+		String palabranueva="";
+		String[] abc = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","x","y","z"};
+		for (int r=0; r<fraseen.length();r++) {
+			letra=fraseen.substring(r,r+1);
+			for(int g=0; g< abc.length;g++) {
+				if(letra.compareTo(abc[g])==0) {
+					posicionnueva=g;
+					if(desicion) {
+						posicionnueva=posicionnueva-numero;
+					}else {
+						posicionnueva=posicionnueva+numero;
+					}
+					if(posicionnueva>=abc.length) {
+						posicionnueva=posicionnueva-abc.length;
+					}
+					if(posicionnueva<0) {
+						posicionnueva=posicionnueva+abc.length;
+					}
+					break;
+				}
+			}
+			letranueva=letranueva+abc[posicionnueva];
+		}
+		palabranueva=palabranueva+letranueva;
+		
+		return palabranueva;
+	}
 }
