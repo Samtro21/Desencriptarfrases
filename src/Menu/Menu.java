@@ -21,50 +21,79 @@ public class Menu {
 		System.out.println("Para el de selene digite 5");
 		System.out.println("Para el de yimir digite 6");
 		System.out.println("Para el de david digite 7");
-		System.out.println("Para el de laura digite 8");
+		System.out.println("Para el de laura campiño digite 8");
+		System.out.println("Para el de nicol digite 9");
+		System.out.println("Para el de samir digite 10");
+		System.out.println("Para el de laura correa digite 11");
 		int opcion =leernum.nextInt();
 		
 		
 		final int SAMCAM=1;
+		Encriptar samuelc=new Encriptar();
+		Desencriptar samuelcd=new Desencriptar();
 		final int SERGIO=2;
+		Encriptar sergio=new Encriptar();
+		Desencriptar sergiod=new Desencriptar();
 		final int ANGELAP=3;
+		Encriptar angelap=new Encriptar();
+		Desencriptar angelapd=new Desencriptar();
 		final int MANUEL=4;
+		Encriptar manuel=new Encriptar();
+		Desencriptar manueld=new Desencriptar();
 		final int SELENE=5;
+		Encriptar selene=new Encriptar();
+		Desencriptar selened=new Desencriptar();
 		final int YIMIR=6;
+		Encriptar yimir=new Encriptar();
+		Desencriptar yimird=new Desencriptar();
 		final int DAVID=7;
+		Encriptar david=new Encriptar();
+		Desencriptar davidd=new Desencriptar();
 		final int LAURAC=8;
-		final int CAROL=9;
+		Encriptar laurac=new Encriptar();
+		Desencriptar lauracd=new Desencriptar();
+		final int NICOL=9;
+		Encriptar nicol=new Encriptar();
+		Desencriptar nicold=new Desencriptar();
 		final int SAMIR=10;
+		Encriptar samir=new Encriptar();
+		Desencriptar samird=new Desencriptar();
+		final int LAURACO=11;
+		Encriptar lauraco=new Encriptar();
+		Desencriptar lauracod=new Desencriptar();
 		switch(opcion){
 			case SAMCAM:
-					fraseen= Encriptar.SamuelCamargo(frase);
+					fraseen= samuelc.samuelcamargo(frase);
 					System.out.println("La frase encriptada es "+fraseen);
-					frasedes=Desencriptar.SamuelCamargo(fraseen);
+					frasedes=samuelcd.samuelcamargo(fraseen);
 					 System.out.println("La frase desencriptada es "+frasedes);
 				break;
 			
 			case SERGIO:
-				 fraseen= Encriptar.Sergio(frase);
+				 fraseen= sergio.sergio(frase);
 				 System.out.println("La frase encriptada es "+fraseen);
+				 frasedes=sergiod.sergio(fraseen);
+				 System.out.println("La frase desencriptada es "+frasedes);
 				break;
 				
 			case ANGELAP:
-				 fraseen= Encriptar.AngelaPeña(frase);
+				 fraseen= angelap.angelapeña(frase);
 				 System.out.println("La frase encriptada es "+fraseen);
-				 frasedes=Desencriptar.AngelaPeña(fraseen);
+				 frasedes=angelapd.angelapeña(fraseen);
 				 System.out.println("La frase desencriptada es "+frasedes);
 				break;	
 			
 			case MANUEL:
-				 fraseen= Encriptar.Manuel(frase);
+				 fraseen= manuel.manuel(frase);
 				 System.out.println("La frase encriptada es "+fraseen);
-				 
+				 frasedes=manueld.manuel(fraseen);
+				 System.out.println("La frase desencriptada es "+frasedes);
 				break;
 				
 			case SELENE:
-				 fraseen= Encriptar.Selene(frase);
+				 fraseen= selene.selene(frase);
 				 System.out.println("La frase encriptada es "+fraseen);
-				 frasedes=Desencriptar.Selene(fraseen);
+				 frasedes=selened.selene(fraseen);
 				 System.out.println("La frase desencriptada es "+frasedes);
 				break;
 				
@@ -73,35 +102,45 @@ public class Menu {
 				int año= leernum.nextInt();
 				System.out.println("para continuar: ingrese su mes de nacimiento");
 				int mes=leernum.nextInt();
-				 fraseen= Encriptar.Yimir(frase, mes,año);
+				 fraseen= yimir.yimir(frase, mes,año);
 				 System.out.println("La frase encriptada es "+fraseen);
-				 frasedes=Desencriptar.Yimir(fraseen,mes,año);
+				 frasedes=yimird.yimir(fraseen,mes,año);
 				 System.out.println("La frase desencriptada es "+frasedes);
 				 
 				break;
 				
 			case DAVID:
-				 fraseen= Encriptar.DavidCruz(frase);
+				 fraseen= david.davidcruz(frase);
 				 System.out.println("La frase encriptada es "+fraseen);
-				 
+				 frasedes=davidd.david(fraseen);
+				 System.out.println("La frase desencriptada es "+frasedes);
 				break;
 				
 			case LAURAC:
-				 fraseen= Encriptar.Lauracampiño(frase);
+				 fraseen= laurac.lauracampiño(frase);
 				 System.out.println("La frase encriptada es "+fraseen);
-				 frasedes=Desencriptar.Lauracampiño(fraseen);
+				 frasedes=lauracd.lauracampiño(fraseen);
 				 System.out.println("La frase desencriptada es "+frasedes);
 				break;
-			case CAROL:
-				 fraseen= Encriptar.carol(frase);
+			case NICOL:
+				 fraseen= nicol.nicol(frase);
 				 System.out.println("La frase encriptada es "+fraseen);
-				 
+				 frasedes=nicold.nicol(fraseen);
+				 System.out.println("La frase desencriptada es "+frasedes);
+
 				break;
 				
 			case SAMIR:
-				 fraseen= Encriptar.SamirYate(frase);
+				 fraseen= samir.samiryate(frase);
 				 System.out.println("La frase encriptada es "+fraseen);
-				 
+				 frasedes=samird.samir(fraseen);
+				 System.out.println("La frase desencriptada es "+frasedes);
+				break;
+			case LAURACO:
+				 fraseen= lauraco.lauraco(frase);
+				 System.out.println("La frase encriptada es "+fraseen);
+				 frasedes=lauracod.lauraco(fraseen);
+				 System.out.println("La frase desencriptada es "+frasedes);
 				break;
 				
 		}
@@ -109,3 +148,5 @@ public class Menu {
 	}
 
 }
+
+

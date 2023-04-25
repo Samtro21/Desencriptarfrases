@@ -1,7 +1,7 @@
 package Calculos;
 
 public class Desencriptar {
-	public static String SamuelCamargo(String fraseen) {
+	public String samuelcamargo(String fraseen) {
         String desencriptarPalabra = ""; //se inicializa una varianle para contener el resultado
 
         
@@ -38,84 +38,116 @@ public class Desencriptar {
         return desencriptarPalabra;   
     
    }
-	public static String AngelaPeña (String fraseen){
-		//Variable que me va a guardar la posicion de la letra en el abecedario
-		int letranumero=0;
-		//Variable que me va a contar si ya se tomaron 2 letras
+	public String sergio(String fraseen) {
+		String[] abecedario = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"};
+		int numeroletra=0;
+		int hasta=0;
+		String nuevaletra="";
+		String nuevapalabra="";
+		String desencrip="";
 		int cont=0;
-		//variable que me va a guardar la palabra desencriptada
-		String palabrades="";
-		//ciclo que se cumple mientras g no sea igual a la longitud de la frase
-        for (int g=0;g<fraseen.length();g++) {
-        	// si ya se leyo una frase de 2 palabras 
-        	if(cont==1) {
-        		//g es igual a g +1 para que no se vuleva a repetir la letra ya contada
-        		g=g+1;
-        		//contador es igual a cero ya que vuelve a contar solo una palabra
-        		cont=0;
-        	}
-        	//hasta donde se va a leer la letra es igual a g +1
-        	int hasta=g+1;
-        	//si son 2 letras se agrega +1 para contar 2 letras
-        	int hasta2=hasta+1;
-        	//se define la variable que va a delante de la que se va a leer
-        	int g2=g+1;
-        	//si la variable es mayor a la longitus de la frase 
-        	if(g2>=fraseen.length()) {
-        		//se iguala a la longitud de la frase menos 1
-    			g2=fraseen.length()-1;
-    		}
-        	//si la variable es mayor a la longitud de la frase
-        	if(hasta2>fraseen.length()) {
-        		//se iguala a la longitud de la palabra
-    			hasta2=fraseen.length();
-    		}
-        	//si a variable es mayor a la longitud de la palabra
-        	if(hasta>fraseen.length()) {
-        		//se iguala la variable a la longitud de la frase 
-    			hasta=fraseen.length();
-    		}
-        	//si la palabra a leer es igual a un espacio
-        	if(fraseen.substring(g,hasta).compareTo(" ")==0) {
-        		// la nueva palabra es vacio
-        		palabrades=""+palabrades;
-        	}else {
-        		//si las letra siguiente a la que se va a leer es diferente a un espacio
-        		if(fraseen.substring(g2,hasta2)!=" ") {
-        			//se aumenta las letras que se van a leer de 1 a 2
-            		hasta=g+2;
-            		//cotador indica que se leyo 2 letras
-            		cont=1;
-            	}
-        		//los diferentes caracteres
-        		String [] caracteres_diferentes = {"+", "*","-", "?","!", "~","#", "$","&", "%","*+", "**","*-", "*?","*!", "*~","*#", "*$","*&", "*%","-+", "-*","--", "-?","-!", "-~",};
-            	//mientras se leen los caracteres
-        		for (int t=0; t<caracteres_diferentes.length;t++) {
-        			//si se encuentra al caracter igual 
-            		if(fraseen.substring(g,hasta).compareTo(caracteres_diferentes[t])==0) {
-            			//se guarda la posicion de este
-                		letranumero=t;
-                		break;
-                	}
-            	}
-        		//abecedario normal
-            	 String [] abecedario = {"a", "b","c", "d","e", "f","g", "h","i", "j","k", "l","m", "n","o", "p","q", "r","s", "t","u", "v","w", "x","y", "z",};
-            		//la posicion de el caracter se pasa a la posicion del abecedario
-            	 letranumero=abecedario.length-letranumero;
-            	//y a esta posicion se le resta una y se le inserta en la variable de la palabra desencriptada
-            	 palabrades=abecedario[letranumero-1]+palabrades;
-        	}
-        	
-        }
-        //finalmente la funcion me retorna la palabra encriptada
-        return(palabrades);
+		for(int y=0; y<fraseen.length();y++) {
+			if(cont==0) {
+				cont=5;
+				for(int u=y;u<fraseen.length();u++) {
+					if(fraseen.substring(u,u+1).compareTo("/")==0) {
+						hasta=u;
+						break;
+					}
+				}
+				int divi16=1;
+				int divi8=1;
+				int divi4=1;
+				int divi2=1;
+				int divi1=1;
+				desencrip=fraseen.substring(y,hasta);
+				if(desencrip.substring(0,1).compareTo("*")==0) {
+					divi16=16;
+				}
+				if(desencrip.substring(1,2).compareTo("*")==0) {
+					divi8=8;
+				}
+				if(desencrip.substring(2,3).compareTo("*")==0) {
+					divi4=6;
+				}
+				if(desencrip.substring(3,4).compareTo("*")==0) {
+					divi2=3;
+				}
+				if(desencrip.substring(4,5).compareTo("*")==0) {
+					divi1=2;
+				}
+				for (int p=0; p<abecedario.length;p++) {
+					if(p/divi16>=1) {
+						if(p/divi8>=1) {
+							if(p/divi4>=1) {
+								if(p/divi2>=1) {
+									if(p/divi1>=1) {
+										numeroletra=p-1;
+										System.out.println(numeroletra);
+										break;
+									}
+								}
+							}
+						}
+					}
+				}
+				nuevaletra=abecedario[numeroletra];
+				nuevapalabra=nuevapalabra+nuevaletra;
+			}else {
+				cont=cont-1;
+				}
+			
+		}
+		
+		return nuevapalabra;
+	}
+	public String angelapeña (String fraseen){
+		int cont=1;
+		int numletra=0;
+		String nuletra="";
+		String nuevpala="";
+		String leerletras="";
+		String [] abecedario = {"z", "y","x", "w","v", "u","t", "s","r", "q","p", "o","n", "m","l", "k","j", "i","h", "g","f", "e","d", "c","b", "a",};
+		String [] caracteres_diferentes = {"+", "*","-", "?","!", "~","#", "$","&", "%","*+", "**","*-", "*?","*!", "*~","*#", "*$","*&", "*%","-+", "-*","--", "-?","-!", "-~",};
+		for(int h=0; h<fraseen.length();h++) {
+			if(cont==1) {
+				if(fraseen.substring(h,h+1).compareTo(" ")==0) {
+					nuletra="";
+				}else {
+					for (int u =0; u< caracteres_diferentes.length;u++) {
+						if (fraseen.substring(h+1,h+2).compareTo(" ")==0) {
+							leerletras=fraseen.substring(h,h+1);
+							if(leerletras.compareTo(caracteres_diferentes[u])==0) {
+								numletra=u;
+							}
+						}else {
+							leerletras=fraseen.substring(h,h+2);
+							cont=2;
+								if(leerletras.compareTo(caracteres_diferentes[u])==0) {
+									numletra=u;
+								}
+						}
+						for(int g=0; g<abecedario.length;g++) {
+							if(g==numletra) {
+								nuletra=abecedario[g];
+							}
+						}
+					}
+				}
+				nuevpala=nuletra+nuevpala;
+			}else {
+				cont=1;
+			}
+			
+		}//finalmente la funcion me retorna la palabra encriptada
+        return nuevpala;
     }
-	public static String YaiderBecerra (String frase) {
+	public String manuel (String frase) {//correccion
 		
 		
 		return "";
 	}
-	public static String Selene (String fraseen){
+	public String selene (String fraseen){
         /*esta función recibe una palabra para encriptarla, según la posición en el abecedario de la letra, se realizará
          * la sucesión de fibonnaci, y se arrojara el número resultante*/
 		String palabradese="";
@@ -149,7 +181,7 @@ public class Desencriptar {
 
         return palabradese;
         }
-	public static String Yimir (String fraseen, int año, int mes) {
+	public String yimir (String fraseen, int año, int mes) {
 		/*
 		* esta funcion recibe una palabra para encriptar a su vez recibe un año 
 		* y un mes (prferiblemente año y ,es de nacimiento)que mediente operaciones matematicas basica
@@ -225,7 +257,11 @@ public class Desencriptar {
 		}
 		return encriptado;
 	}
-	public static String Lauracampiño (String fraseen) {
+	public String david(String fraseen) {
+		
+		return"";
+	}
+	public String lauracampiño (String fraseen) {
 		int divi=1;
 		String letra="";
 		int numeroleabc=0;
@@ -296,5 +332,45 @@ public class Desencriptar {
 		
 		
 		return frasedes;
+	}
+	public String nicol (String fraseen) {
+		return"";
+	}
+	public String samir (String fraseen) {
+		return"";
+	}
+	public String lauraco (String fraseen) {
+		int hasta=0;
+		int numpalabra=0;
+		String letranue="";
+		String palabrades="";
+		String palabra="";
+		String [] abecedario = {"a", "b","c", "d","e", "f","g", "h","i", "j","k", "l","m", "n","o", "p","q", "r","s", "t","u", "v","w", "x","y", "z",};
+		String [] lista_palabras = 
+
+			{"magdalena","fishburne","crucial","kendrik","suena","perfume","goodgirls","bahia","swift","semejante","akkas","ambulance","tiempos","mango","ghost","zepet","buque","world","misma","anestecia","uchuvas","alvin","williamwilson","boxeo","nsync","gozar"};
+		for(int g=0; g<fraseen.length();g++) {
+			if(fraseen.substring(g,g+1).compareTo("-")==0) {
+				letranue="";
+			}else {
+				for (int y=g; y<fraseen.length();y++) {
+					if(fraseen.substring(y,y+1).compareTo("-")==0) {
+						hasta=y;
+						palabra=fraseen.substring(g,hasta);
+						g=y;
+						for(int e=0; e<lista_palabras.length;e++) {
+							if(palabra.compareTo(lista_palabras[e])==0) {
+								numpalabra=e;
+								letranue=abecedario[numpalabra];
+								break;
+							}
+						}
+						break;
+					}	
+				}
+			}
+			palabrades=palabrades+letranue;
+		}
+		return palabrades;
 	}
 }
