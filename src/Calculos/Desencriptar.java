@@ -78,20 +78,7 @@ public class Desencriptar {
 				}
 				for (int p=0; p<abecedario.length;p++) {
 					if(p/divi16>=1) {
-						if(p/divi8>=1) {
-							if(p/divi4>=1) {
-								if(p/divi2>=1) {
-									if(p/divi1>=1) {
-										numeroletra=p;
-										break;
-									}else {
-										numeroletra=0;
-										break;
-									}
-									
-								}
-							}
-						}
+						
 					}
 				}
 				nuevaletra=abecedario[numeroletra];
@@ -145,11 +132,6 @@ public class Desencriptar {
 		}//finalmente la funcion me retorna la palabra encriptada
         return nuevpala;
     }
-	public String manuel (String frase) {//correccion
-		
-		
-		return "";
-	}
 	public String selene (String fraseen){
         /*esta función recibe una palabra para encriptarla, según la posición en el abecedario de la letra, se realizará
          * la sucesión de fibonnaci, y se arrojara el número resultante*/
@@ -169,14 +151,14 @@ public class Desencriptar {
                     for(int x=0; x<posicion; x++){//for para sucesión de fibonacci
                         //el contadorUno representará el número anterior por el que se va a sumar luego, el contadorDos la suma ya hecha y el contadorTres la suma como tal
                         contadorDos=contadorTres;
-                        contadorTres=contadorDos+contadorUno;
+                        contadorTres=contadorDos-contadorUno;
                         contadorUno=contadorDos;
-                        while(contadorDos>abecedario.length) {
-                        	contadorDos=contadorDos-abecedario.length;
+                        while(contadorDos<abecedario.length) {
+                        	contadorDos=contadorDos+abecedario.length;
                         }
                     }
-                    posicion2=contadorDos-posicion;
-                    palabradese=abecedario[posicion2]+palabradese;
+                    posicion2=contadorDos;
+                    palabradese=palabradese+abecedario[posicion2];
                     
                 }
             }
@@ -337,10 +319,57 @@ public class Desencriptar {
 		return frasedes;
 	}
 	public String nicol (String fraseen) {
-		return"";
+		int hasta=0;
+		int numletra=0;
+		String nuevaletra="";
+		String nuevapala="";
+		String[] letraEsp = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "Ñ", "O", "P", "Q", "R",
+				"S", "T", "U", "V", "W", "X", "Y", "Z" };
+		String[] letraMorse = { ".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", ".---", "-.-", ".-..", "--",
+				"-.", "--.--", "---", ".--.", "--.-", ".-.", "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--.." };
+		for(int y=0; y<fraseen.length();y++) {
+			for(int h=y; h<fraseen.length();h++) {
+				if(fraseen.substring(h,h+1).compareTo("|")==0) {
+					hasta=h+1;
+					break;
+				}
+				for(int t=0; t<letraMorse.length;t++) {
+					if(fraseen.substring(y,hasta).compareTo(letraMorse[t])==0) {
+						numletra=t;
+						break;
+					}
+				}
+				for(int l=0;l<letraEsp.length;l++) {
+					if(numletra==l) {
+						nuevaletra=letraEsp[l];
+					}
+				}
+				y=hasta;
+			}
+			nuevapala=nuevapala+nuevaletra;
+		}
+		
+		
+		return nuevapala;
 	}
 	public String samir (String fraseen) {
-		return"";
+		String nuevapalabra="";
+		String nuevaletra="";
+		int numletra=0;
+		String [] abecedario = {"A", "B","C", "D","E", "F","G", "H","I", "J","K", "L","M", "N","O", "P","Q", "R","S", "T","U", "V","W", "X","Y", "Z",};
+		for(int g=0; g<fraseen.length();g++) {
+			for(int j=0; j<abecedario.length;j++) {
+				if(fraseen.substring(g,g+1).compareTo(abecedario[j])==0) {
+					numletra=j-3;
+					if(numletra<0) {
+						numletra=numletra+abecedario.length;
+					}
+					nuevaletra=abecedario[numletra];
+				}
+			}
+			nuevapalabra=nuevapalabra+nuevaletra;
+		}
+		return nuevapalabra;
 	}
 	public String lauraco (String fraseen) {
 		int hasta=0;

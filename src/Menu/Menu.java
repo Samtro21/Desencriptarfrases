@@ -18,18 +18,17 @@ public class Menu {
 		System.out.println("Para el de samuel camargo digite 1");
 		System.out.println("Para el de sergio digite 2");
 		System.out.println("Para el de angela peña digite 3");
-		System.out.println("Para el de manuel digite 4");
-		System.out.println("Para el de selene digite 5");
-		System.out.println("Para el de yimir digite 6");
-		System.out.println("Para el de david digite 7");
-		System.out.println("Para el de laura campiño digite 8");
-		System.out.println("Para el de nicol digite 9");
-		System.out.println("Para el de samir digite 10");
-		System.out.println("Para el de laura correa digite 11");
-		System.out.println("Para el de elias digite 12");
-		System.out.println("Para el de tomas digite 13");
-		System.out.println("Para el de juan digite 14");
-		System.out.println("Para el de Samuel Castro digite 15");
+		System.out.println("Para el de selene digite 4");
+		System.out.println("Para el de yimir digite 5");
+		System.out.println("Para el de david digite 6");
+		System.out.println("Para el de laura campiño digite 7");
+		System.out.println("Para el de nicol digite 8");
+		System.out.println("Para el de samir digite 9");
+		System.out.println("Para el de laura correa digite 10");
+		System.out.println("Para el de elias digite 11");
+		System.out.println("Para el de tomas digite 12");
+		System.out.println("Para el de juan digite 13");
+		System.out.println("Para el de Samuel Castro digite 14");
 		int opcion =leernum.nextInt();
 		
 		
@@ -42,40 +41,37 @@ public class Menu {
 		final int ANGELAP=3;
 		Encriptar angelap=new Encriptar();
 		Desencriptar angelapd=new Desencriptar();
-		final int MANUEL=4;
-		Encriptar manuel=new Encriptar();
-		Desencriptar manueld=new Desencriptar();
-		final int SELENE=5;
+		final int SELENE=4;
 		Encriptar selene=new Encriptar();
 		Desencriptar selened=new Desencriptar();
-		final int YIMIR=6;
+		final int YIMIR=5;
 		Encriptar yimir=new Encriptar();
 		Desencriptar yimird=new Desencriptar();
-		final int DAVID=7;
+		final int DAVID=6;
 		Encriptar david=new Encriptar();
 		Desencriptar davidd=new Desencriptar();
-		final int LAURAC=8;
+		final int LAURAC=7;
 		Encriptar lauracampiño=new Encriptar();
 		Desencriptar lauracd=new Desencriptar();
-		final int NICOL=9;
+		final int NICOL=8;
 		Encriptar nicolcepeda=new Encriptar();
 		Desencriptar nicold=new Desencriptar();
-		final int SAMIR=10;
+		final int SAMIR=9;
 		Encriptar samir=new Encriptar();
 		Desencriptar samird=new Desencriptar();
-		final int LAURACO=11;
+		final int LAURACO=10;
 		Encriptar lauraco=new Encriptar();
 		Desencriptar lauracod=new Desencriptar();
-		final int ELIAS=12;
+		final int ELIAS=11;
 		Encriptar eliascamargo=new Encriptar();
 		Desencriptar eliascamd=new Desencriptar();
-		final int TOMAS=13;
+		final int TOMAS=12;
 		Encriptar tomasespinel=new Encriptar();
 		Desencriptar tomasesd=new Desencriptar();
-		final int JUANFU=14;
+		final int JUANFU=13;
 		Encriptar juanfuquene=new Encriptar();
 		Desencriptar juanfud=new Desencriptar();
-		final int SAMUELC=15;
+		final int SAMUELC=14;
 		Encriptar samuelcas=new Encriptar();
 		Desencriptar samuelcasd=new Desencriptar();
 		
@@ -100,13 +96,6 @@ public class Menu {
 				 frasedes=angelapd.angelapeña(fraseen);
 				 System.out.println("La frase desencriptada es "+frasedes);
 				break;	
-			
-			case MANUEL:
-				 fraseen= manuel.manuel(frase);
-				 System.out.println("La frase encriptada es "+fraseen);
-				 frasedes=manueld.manuel(fraseen);
-				 System.out.println("La frase desencriptada es "+frasedes);
-				break;
 				
 			case SELENE:
 				 fraseen= selene.selene(frase);
@@ -198,6 +187,5 @@ public class Menu {
 	}
 
 }
-
 
 

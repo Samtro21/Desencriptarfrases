@@ -116,151 +116,11 @@ public class Encriptar {
 		//finalmente la funcion me retorna la palabra encriptada
 		return(palabra_encriptada);
 	}
-	public String manuel (String frase){//correccion
-		 /*
-	     * Manuel Esteban Cruz 202310238
-	     * el programa me encripta la palabra de la siguiente manera:
-	     * divide el abcdario en dos, las primeras 13 letras y las segundas 13 letras
-	     * me imprime letra por letra
-	     * si la letra esta dentro de las 13 primeras me va a imprimir un solo cuadrado
-	     * pero si la letra esta en las 13 segundas me va a imprimir dos cuadrados,
-	     * esto con el fin de que se pueda leer con mas facilidad. Cada de que encripta
-	     * una letra aparece un separador y un numero, el numero corresponde a
-	     * la posicion de la letra en el abcdario
-	     * a continuacion dejo ejemplos para que se pueda entender mas facil
-	     * 
-	     * ejm1:
-	     * si yo pido imprimir "abc" me aparece esto
-	     * .
-	     * ________
-	     * 1
-	     * ..
-	     * ..
-	     * ________
-	     * 2
-	     * ...
-	     * ...
-	     * ...
-	     * ________
-	     * 3
-	     * 
-	     * ejm2:
-	     * si pido que imprima "nop" aparece esto
-	     *  .............             .
-	        .............
-	        .............
-	        .............
-	        .............
-	        .............
-	        .............
-	        .............
-	        .............
-	        .............
-	        .............
-	        .............
-	        .............
-
-	        ___________________
-	        .............             ..
-	        .............             ..
-	        .............
-	        .............
-	        .............
-	        .............
-	        .............
-	        .............
-	        .............
-	        .............
-	        .............
-	        .............
-	        .............
-
-	        ___________________
-	        .............             ...
-	        .............             ...
-	        .............             ...
-	        .............
-	        .............
-	        .............
-	        .............
-	        .............
-	        .............
-	        .............
-	        .............
-	        .............
-	        .............
-
-	        ___________________
-	     */
-		String palabraencriptar=frase;
-	        String abc = "abcdefghijklmnopqrstuvwxyz";// uso el abcdario como una palabra, luego para comparar solo uso un
-	                                                  // substring que vaya letra por letra
-	        String cuadrado = "";// la variable vacia es donde se va a almacenar la longitud de lado del cuadrado
-	        String espacios = "             ";// los espacios los uso para separar los cuadros cuando la posicion de la
-	                                          // letra es > a 13
-	        String cuadradouno = ".............";
-	        String cuadro = "";
-	        String palabraecriptada = "";
-	        /*
-	         * esta variable es para cuando la letra corresponda a la segunda mitad, para
-	         * poder imprimir un cuadrado antes de imprimir el otro
-	         */
-	        int lonpalabra = palabraencriptar.length();
-	        int lonabc = abc.length();
-	        for (int i = 0; i <= lonpalabra - 1; i++) {// primer for que va a ir letra por letra en la palabra
-	            String letraporletra = (palabraencriptar.substring(i, i + 1));
-	            for (int e = 0; e < lonabc; e++) {// segundo for que va a ir letra por letra en el abcdario
-	                String letras = (abc.substring(e, e + 1));
-	                if (letraporletra.equals(letras)) {// cuando las letras que pasan por los for coincidan se cumple la
-	                                                   // condicion
-	                    if (e <= 12) {/// esta primera condicion es donde me va a imprimir solo un cuadrado, esta va
-	                                  // hasta la letra "m"
-
-	                        while (cuadrado.length() <= e) {
-	                            cuadrado = cuadrado + "."; /*
-	                                                        * los puntos son para hacer los cuadrados, la cantidad de puntos
-	                                                        * en sentido horizontal corresponde a la
-	                                                        * posicion de la letra en el
-	                                                        * abcdario y en sentido vertical se lee segun si la letra
-	                                                        * pertenece a las 13 primeras o a las 13 segundas
-	                                                        */
-	                        }
-
-	                        for (int c = 0; c <= e; c++) {
-	                            cuadro= cuadro + cuadrado + "\n";
-	                        }
-	                        cuadro = cuadro + "\n" + "___________________"
-	                                + "\n";
-
-	                    }
-
-	                    if (e > 12) {
-
-	                        while (cuadrado.length() <= e - 13) {
-	                            cuadrado = cuadrado + ".";
-	                        }
-	                        int cuadrado_dos = cuadrado.length();
-	                        for (int d = 1; d <= 13; d++) {
-	                            if (cuadrado_dos <= cuadrado.length() * cuadrado.length()) {
-	                                cuadro = cuadro + cuadradouno + espacios + cuadrado + "\n";
-	                                cuadrado_dos = cuadrado_dos + cuadrado.length();
-	                            } else {
-	                               cuadro = cuadro + cuadradouno + espacios + "\n";
-	                            }
-
-	                        }
-	                        cuadro = cuadro + "\n" + "___________________"
-	                                + "\n";
-	                    }
-	            
-	                }
-	            }
-	        }
-	        palabraecriptada = palabraecriptada + "\n" + cuadro;
-	        return palabraecriptada;
-	}
+	
 	public String selene (String frase){
 		String texto=frase;
+		int posicion2=0;
+		String palabradese="";
 		//*esta función recibe una palabra para encriptarla, según la posición en el abecedario de la letra, se realizará
         /* la sucesión de fibonnaci, y se arrojara el número resultante*/
        String fin ="programa finalizado"; 
@@ -280,12 +140,17 @@ public class Encriptar {
                        contadorDos=contadorTres;
                        contadorTres=contadorDos+contadorUno;
                        contadorUno=contadorDos;
-                   }System.out.println(contadorDos);//imprime el resultado de la encriptación letra por letra
+                       while(contadorDos>abecedario.length) {
+                       	contadorDos=contadorDos-abecedario.length;
+                       }
+                   }
+                   posicion2=contadorDos;
+                   palabradese=abecedario[posicion2]+palabradese;
                }
            }
        }
 
-       return fin;
+       return palabradese;
 	}
 
 	public String yimir (String frase, int año, int mes) {
@@ -355,9 +220,45 @@ public class Encriptar {
 		return encriptado;
 	}
 	public String davidcruz(String palabra) { //correccion 
-		
-		return "" ; //La funcion me retorna la palabra encriptada	       
-	}
+			/* Recibe una palabra cualquiera, si el numero de letras que tiene esa palabra es par el programa le definira un
+			 * valor a cada letra con numeros pares y si es impar le definira un valor a cada letra con numeros impares. 
+			 * 1.Ejemplo: abcd (4 letras= par), por lo que definira a=0, b=2, c=4, d=6.
+			 *  2.Ejemplo: abc (3 letras=impar), por los que definira a=1, b=3, c=5. 
+			 * */
+			int numeroPar = 0;
+			int numeroImpar=1;//           
+	   		int[] abecedario= new int[26];//Se establece un vector que vaya hasta la posicion 26
+	   		
+	   		if (palabra.length() % 2 == 0) {//Se procesa cuando el numero de palabras ingresadas es par
+	               
+	               for (int i = 0; i < abecedario.length; i++) {//Se imprimen los numeros pares hasta la posicion 26
+	                   abecedario[i] = numeroPar;
+	                   numeroPar += 2;
+	               }
+
+	               for (int i = 0; i < palabra.length(); i++) { // Se imprimen los números pares correspondientes a la palabra
+	                   char caracter = palabra.charAt(i);
+	                       int numero1 = abecedario[caracter - 'a'];
+	                       System.out.print(numero1+"/");
+	                   
+	               }
+	           }
+	   		else {//Se procesa cuando el numero de palabras ingresadas es impar
+	               for (int i = 0; i < abecedario.length; i++) {//Se imprimen los numeros pares hasta la posicion 26
+	                   abecedario[i] = numeroImpar;
+	                   numeroImpar += 2;
+	               }
+	       
+	               for (int i = 0; i < palabra.length(); i++) { // Se imprimen los números impares correspondientes a la palabra
+	                   char caracter = palabra.charAt(i);
+	                       int numero2 = abecedario[caracter - 'a'];
+	                       System.out.print(numero2 + "/");
+	                   }
+	               
+	               
+	           }
+	      return palabra;
+	    }	       
 	public String lauracampiño(String frase) {
 
 		/*El programa encripta la palabra asi:
@@ -510,7 +411,56 @@ public class Encriptar {
 		return palabraEnc;
 	}
 	public String samiryate( String texto){//correccion
-		return "";
+
+		        // Creo las variables y los datos a mostrar por pantalla:
+		        String abc = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
+		        System.out.println("Texto codificado: " + texto);
+
+
+		       //Creo un String para que me guarde el texto codificado dentro de esta variable:
+		        String textoCodificado = "";
+
+		        /* Lo que me permite es que el texto ingresado me devuelva la encriptación en
+		          mayuscula para eso se usa el metodo (toUpperCase), ya que el abecedario esta en mayuscula: */
+		        texto = texto.toUpperCase();
+
+		        
+		        Boolean cond = true;
+		        /*  Este ciclo tiene la funcion de recorrerme todo el texto, que para esto,
+		         nos ayuda tambien el texto.length() y nos incrementa en 1:   */
+		        for (int i = 0; i < texto.length(); i++) {
+
+		            // Creo un String en el que me guarda caracter por caracter:
+		            String caracter = texto.substring(i, i + 1);
+		            int posicion = 0;
+		           //Me reinicia la condicion de los espacios:
+		            cond = true;
+		            // Me dice la posición donde esta un caracter:
+		            for (int x = 0; x < abc.length(); x++) {
+
+		                //Si el caracter es igual a una letra, ya no puede ser un espacio, me compara con el abecedario:
+		                if (caracter.equals(abc.substring(x, x + 1))) {
+		                   
+		                 posicion = x;
+		                //Ya no es un espacio:
+		                 cond = false;
+		                    // Este if me va a diriguir al comienzo del abecedarios si se pasa:
+		                    if (posicion + 3 > abc.length()) {
+		                        posicion += -abc.length();
+		                    }
+		                    //Al texto codificado me suma la letra nueva
+		                     textoCodificado += abc.substring(posicion + 3, posicion + 4);
+		                }
+		            }
+		            //Si la condicion es verdadera tiene que ir un espacio:
+		            if (cond) {
+		              //Al texto codificado me suma un espacio:
+		                textoCodificado += " ";
+		            }
+		        }
+		        // Me retorna el String (textoCodificado) a la clase main para mostrarlos en pantalla por dicha clase:
+		        return textoCodificado;
+		    
 	}
 	public String lauracorrea (String palabra) {
    	 
